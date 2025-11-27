@@ -19,11 +19,11 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
     return ipcRenderer.invoke(channel, ...omit)
   },
 
-  // You can expose other APTs you need here.
-  // ...
+  // 其他API ...
 })
 
 // --------- Preload scripts loading ---------
+//检测页面是否加载完成
 function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return new Promise((resolve) => {
     if (condition.includes(document.readyState)) {
@@ -38,6 +38,7 @@ function domReady(condition: DocumentReadyState[] = ['complete', 'interactive'])
   })
 }
 
+//进行更安全DOM添加和删除操作的对象
 const safeDOM = {
   append(parent: HTMLElement, child: HTMLElement) {
     if (!Array.from(parent.children).find(e => e === child)) {
@@ -57,6 +58,7 @@ const safeDOM = {
  * https://projects.lukehaas.me/css-loaders
  * https://matejkustec.github.io/SpinThatShit
  */
+//封装好的加载页面，appendLoading挂载上页面，remove删除
 function useLoading() {
   const className = `loaders-css__square-spin`
   const styleContent = `
@@ -108,11 +110,13 @@ function useLoading() {
 
 // ----------------------------------------------------------------------
 
+//引入
 const { appendLoading, removeLoading } = useLoading()
+//没加载好的时候使用加载页面
 domReady().then(appendLoading)
-
-window.onmessage = (ev) => {
+//收到remove消息立即移除加载页面
+window.onmessage = (ev: { data: { payload: string } }) => {
   ev.data.payload === 'removeLoading' && removeLoading()
 }
-
+//兜底 5s后自动移除页面
 setTimeout(removeLoading, 4999)
