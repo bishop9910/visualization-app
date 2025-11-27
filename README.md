@@ -1,6 +1,6 @@
 # Visualization Application based on electron-vite-vue
 
-[![GitHub Build](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml/badge.svg)](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml)
+[![GitHub Build](https://github.com/bishop9910/visualization-app/actions/workflows/build.yml/badge.svg)](https://github.com/bishop9910/visualization-app/actions/workflows/build.yml)
 
 ## Quick Setup
 
