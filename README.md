@@ -6,7 +6,7 @@
 
 ```sh
 # clone the project
-git clone https://github.com/electron-vite/electron-vite-vue.git
+git clone https://github.com/bishop9910/visualization-app.git
 
 # enter the project directory
 cd electron-vite-vue
