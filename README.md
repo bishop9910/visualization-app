@@ -9,7 +9,7 @@
 git clone https://github.com/bishop9910/visualization-app.git
 
 # enter the project directory
-cd electron-vite-vue
+cd visualization-app
 
 # install dependency
 npm install
